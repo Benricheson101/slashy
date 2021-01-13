@@ -44,9 +44,7 @@ export class Interaction {
   }
 
   /** Respond to an interaction */
-  async send<T extends InteractionResponse | WebhookPostResult>(
-    body: string
-  ): Promise<T>;
+  async send<T extends WebhookPostResult | void>(body: string): Promise<T>;
   async send(body: InteractionResponse): Promise<void>;
   async send(body: WebhookBody): Promise<WebhookPostResult>;
   async send(
@@ -84,7 +82,10 @@ export class Interaction {
    * @param body The new message content
    * @param id The ID to of the message to edit. Leave blank to edit original message
    */
-  async edit(body: WebhookBody | string, id = '@original') {
+  async edit(
+    body: WebhookBody | string,
+    id = '@original'
+  ): Promise<WebhookPostResult> {
     const result = await axios.patch(
       `${this.webhookURL}/messages/${id}`,
       typeof body === 'string' ? {content: body} : body,
@@ -100,7 +101,7 @@ export class Interaction {
    * Delete a message
    * @param id The ID of the message to delete. Leave empty to delete original message.
    */
-  async delete(id = '@original') {
+  async delete(id = '@original'): Promise<void> {
     const result = await axios.delete(`${this.webhookURL}/messages/${id}`, {
       validateStatus: null,
     });

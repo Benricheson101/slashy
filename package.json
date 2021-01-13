@@ -4,10 +4,8 @@
   "version": "1.0.1",
   "main": "build/src/index.js",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Benricheson101/slashy"
-  },
+  "repository": "github:Benricheson101/slashy",
+  "funding": "ko-fi.com/red_panda",
   "devDependencies": {
     "@types/express": "^4.17.11",
     "@types/node": "^14.11.2",
@@ -31,6 +29,7 @@
     "node": ">=12.13.0"
   },
   "files": [
-    "build/**/*"
+    "build/**/*",
+    "tsconfig.json"
   ]
 }
