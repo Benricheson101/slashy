@@ -61,7 +61,7 @@ export class Interaction {
    * Send a plain text message
    * @param body Text to send
    */
-  async send<T extends WebhookPostResult | void>(body: string): Promise<T>;
+  async send(body: string): Promise<WebhookPostResult | void>;
 
   /**
    * Send an initial response
