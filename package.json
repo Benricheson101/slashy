@@ -2,7 +2,7 @@
   "name": "slashy",
   "description": "An easy to use wrapper for Discord slash commands",
   "version": "1.0.4",
-  "main": "build/src/index.js",
+  "main": "build/lib/index.js",
   "license": "MIT",
   "repository": "github:Benricheson101/slashy",
   "funding": "ko-fi.com/red_panda",

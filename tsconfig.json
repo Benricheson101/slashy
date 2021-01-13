@@ -6,7 +6,7 @@
     "lib": ["ES2019"]
   },
   "include": [
-    "src/**/*.ts",
+    "lib/**/*.ts",
     "test/**/*.ts"
   ]
 }
