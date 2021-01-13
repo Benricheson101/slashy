@@ -8,10 +8,24 @@ export class Interaction {
   /** The defaults to use for the initial response */
   defaults: Partial<InteractionResponse>;
 
+  /** Whether or not an initial response been sent */
   private sentInitial = false;
 
+  /**
+   * Construct an interaction client
+   *
+   * NOTE: when `applicationId` is not set, the application ID must be set in an environment variable called `APPLICATION_ID`
+   * @param interaction The interaction data
+   * @param [defaults] The default settings used when sending the initial response
+   */
   constructor(interaction: Interaction, defaults?: Interaction['defaults']);
 
+  /**
+   * Construct an interaction client
+   * @param interaction The interaction data
+   * @param applicationId The ID of the application
+   * @param [defaults] The default settings used when sending the initial response
+   */
   constructor(
     interaction: Interaction,
     applicationId?: string,
@@ -43,10 +57,28 @@ export class Interaction {
     Object.assign(this, interaction);
   }
 
-  /** Respond to an interaction */
+  /**
+   * Send a plain text message
+   * @param body Text to send
+   */
   async send<T extends WebhookPostResult | void>(body: string): Promise<T>;
+
+  /**
+   * Send an initial response
+   *
+   * note: you must do this before sending a followup message
+   * @param body Initial response data
+   */
   async send(body: InteractionResponse): Promise<void>;
+
+  /**
+   * Send a followup message
+   *
+   * note: you can only use this after sending the initial response
+   * @param body Followup message data
+   */
   async send(body: WebhookBody): Promise<WebhookPostResult>;
+
   async send(
     body: string | InteractionResponse | WebhookBody
   ): Promise<void | WebhookPostResult> {
@@ -80,7 +112,7 @@ export class Interaction {
   /**
    * Edit an interaction response
    * @param body The new message content
-   * @param id The ID to of the message to edit. Leave blank to edit original message
+   * @param [id] The ID to of the message to edit. Leave blank to edit original message
    */
   async edit(
     body: WebhookBody | string,
@@ -99,7 +131,7 @@ export class Interaction {
 
   /**
    * Delete a message
-   * @param id The ID of the message to delete. Leave empty to delete original message.
+   * @param [id] The ID of the message to delete. Leave empty to delete original message.
    */
   async delete(id = '@original'): Promise<void> {
     const result = await axios.delete(`${this.webhookURL}/messages/${id}`, {
@@ -139,7 +171,7 @@ export class Interaction {
     return `https://discord.com/api/v8/interactions/${this.id}/${this.token}/callback`;
   }
 
-  /** The webhook URL for responding */
+  /** The webhook URL for sending followup messages */
   get webhookURL(): string {
     return `https://discord.com/api/v8/webhooks/${this.applicationId}/${this.token}`;
   }
