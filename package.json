@@ -1,7 +1,7 @@
 {
   "name": "slashy",
   "description": "An easy to use wrapper for Discord slash commands",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "build/src/index.js",
   "license": "MIT",
   "repository": "github:Benricheson101/slashy",
