@@ -2,8 +2,11 @@ import axios from 'axios';
 
 /** Handle a slash command interaction */
 export class Interaction {
+  /** The Discord developer portal application ID or bot client ID */
   applicationId: string;
-  defaults: Partial<InteractionResponse> | Partial<WebhookBody>;
+
+  /** The defaults to use for the initial response */
+  defaults: Partial<InteractionResponse>;
 
   private sentInitial = false;
 
