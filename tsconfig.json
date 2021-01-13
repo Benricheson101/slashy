@@ -3,7 +3,8 @@
   "compilerOptions": {
     "rootDir": ".",
     "outDir": "build",
-    "lib": ["ES2019"]
+    "lib": ["ES2019"],
+    "sourceMap": false
   },
   "include": [
     "lib/**/*.ts",
