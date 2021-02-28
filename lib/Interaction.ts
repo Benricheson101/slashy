@@ -196,8 +196,8 @@ export interface ApplicationCommandOption {
   description: string;
   default?: boolean;
   required?: boolean;
-  choices?: ApplicationCommandOptionChoice;
-  options?: ApplicationCommandOption;
+  choices?: ApplicationCommandOptionChoice[];
+  options?: ApplicationCommandOption[];
 }
 
 export enum ApplicationCommandOptionType {

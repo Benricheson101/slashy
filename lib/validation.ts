@@ -1,5 +1,5 @@
 import {verify} from 'noble-ed25519';
-import {Request, Response, NextFunction} from 'express';
+import type {Request, Response, NextFunction} from 'express';
 import {Interaction} from './Interaction';
 import {IncomingHttpHeaders} from 'http';
 
