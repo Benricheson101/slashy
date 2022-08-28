@@ -258,7 +258,8 @@ export interface InteractionResponse {
 export enum InteractionResponseType {
   Pong = 1,
   Acknowledge = 2,
-  ChannelMessage = 3,
+  /** @deprecated */
+  ChannelMessage = 4,
   ChannelMessageWithSource = 4,
   ACKWithSource = 5,
 }
